@@ -1,0 +1,22 @@
+#!/bin/bash
+#
+# Substitue underlines for spaces in all file names in the current directory
+#
+# (c) Serhiy Kobyakov
+# 11.12.2012
+#
+# one-liner which does not always work:
+# find . -maxdepth 1 -name '* *' -type f -printf 'mv "%p" $(echo "%p"|tr " " _)\n' | sh
+#
+
+OLDIFS="$IFS"
+IFS=':'
+
+for file in *\ *
+do
+  mv "$file" "${file// /_}"
+done
+
+IFS="$OLDIFS"
+
+exit 0

@@ -2,7 +2,7 @@
 
 This repository contains a collection of handy Bash scripts for automating common tasks.
 
-## Files Management
+## File Management
 - **rmfspace**: Replaces spaces with underscores in all file names in the current directory.
 - **rmdspace**: Replaces spaces with underscores in all directory names in the current directory.
 

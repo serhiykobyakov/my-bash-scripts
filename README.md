@@ -2,7 +2,6 @@
 
 This repository contains a collection of handy Bash scripts for automating common tasks.
 
-
 ## Files Management
 - **rmfspace**: Replaces spaces with underscores in all file names in the current directory.
 - **rmdspace**: Replaces spaces with underscores in all directory names in the current directory.
@@ -14,9 +13,8 @@ This repository contains a collection of handy Bash scripts for automating commo
 
 ### Setup Instructions
 
-Configuration file
+Configuration file: create a `~/.credentials-android` file with the following content:
 
-Create a file `~/.credentials-android` with the following content:
 ```bash
 USER="your_username"
 PASS="your_password"
@@ -25,11 +23,14 @@ PORT="2221"
 ```
 
 ## Installation
+
 Run the `install` script to install all scripts on your machine (single user install):
+
 ```bash
 $ ./install
 ```
 
 ## Usage
+
 Refer to the script names for their specific functionality.
 

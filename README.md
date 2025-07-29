@@ -12,10 +12,10 @@ This repository contains a collection of handy Bash scripts for automating commo
 - **android-umount**: Unmounts the Android FTP server.
 - **getpic-android-ftp**: Transfers images from an Android phone to a local directory.
 
-Setup Instructions
+### Setup Instructions
 
+Configuration file
 
-### Configuration file
 Create a file `~/.credentials-android` with the following content:
 ```bash
 USER="your_username"

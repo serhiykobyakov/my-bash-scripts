@@ -1,0 +1,36 @@
+#!/bin/bash
+
+dependencies=(
+  "gio"
+  "nc"
+)
+
+scripts=(
+  "getpic-android-ftp"
+  "android-mount"
+  "android-umount"
+  "rmfspace"
+  "rmdspace"
+)
+
+echo "Installing dependencies..."
+for dep in "${dependencies[@]}"; do
+  if ! command -v "$dep" &> /dev/null; then
+    sudo apt install -y "$dep"
+  fi
+done
+
+usrname=`whoami`
+install_dir="/home/$usrname/.local/bin"
+if [ ! -d "$install_dir" ]; then
+  mkdir -p "$install_dir"
+fi
+
+echo -n "Installing scripts to $install_dir..."
+for script in "${scripts[@]}"; do
+  cp "scripts/$script" "$install_dir/$script"
+  chmod +x "$install_dir/$script"
+done
+echo "done"
+
+exit 0

@@ -1,0 +1,33 @@
+#!/bin/bash
+#
+# This script helps to transfer images from Android phone to local directory
+# using ftp connection
+#
+# How to use: start ftp server on android phone, then run this script
+#
+
+# use credentials from
+. ~/.credentials-android
+
+usrname=`whoami`
+
+android_path="${XDG_RUNTIME_DIR:-"/run/user/$(id -u)"}/gvfs/ftp:host=$HOST,port=$PORT,user=$USER"
+
+if [ -d "$android_path" ]; then
+  echo "Android ftp is mounted at $android_path"
+else
+  android-mount
+fi
+
+dst_year=`date '+%Y'`
+dst_date=`date '+%m-%d_%H-%M'`
+dst_dir="/home/$usrname/Downloads/$dst_year/$dst_date"
+mkdir -p "$dst_dir"
+
+echo -n "Moving files..."
+  src_dir="$android_path/DCIM/Camera/"
+  mv "$src_dir"* "$dst_dir" #>/dev/null 2>&1
+echo "done"
+
+android-umount
+

@@ -1,0 +1,35 @@
+#!/bin/bash
+#
+# Transfer images from Pixel 9 to local directory
+#
+
+sleep 1
+
+# use credentials from
+. ~/.credentials-android
+
+runtime_dir=${XDG_RUNTIME_DIR:-"/run/user/$(id -u)"}
+gvfs_path="$runtime_dir/gvfs"
+name_pattern="ftp:host=*user=*"
+pixel_path=$(find "$gvfs_path" -maxdepth 1 -type d -name "$name_pattern")
+# echo "found pixel_path: $pixel_path"
+
+if [ -n "$pixel_path" ]; then
+  # if Pixel is mounted
+
+  # get user name from string
+  USER="${pixel_path#*user=}"
+  
+  # get IP address from the string
+  temp_string="${pixel_path#*host=}"
+  HOST="${temp_string%%,*}"
+
+  # finally, unmount Pixel
+  FTPURL="ftp://$USER@$HOST:$PORT"
+  # gio mount -u $FTPURL
+  # gio mount -u "gvfs/ftp:host=$HOST,port=$PORT,user=$USER"
+  gio mount -u "$pixel_path"
+fi
+
+exit 0
+

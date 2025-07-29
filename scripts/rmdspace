@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+# Substitue underlines for spaces in all local directory names
+#
+
+find . -maxdepth 5 -name '* *' -type d -printf 'mv -f "%p" $(echo "%p"|tr " " _)\n'|sh
+
+exit 0

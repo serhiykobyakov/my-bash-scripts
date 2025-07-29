@@ -25,9 +25,9 @@ PORT="2221"
 ```
 
 ## Installation
-Run the `install` script to install all scripts to your machine (single user install):
+Run the `install` script to install all scripts on your machine (single user install):
 ```bash
-./install
+$ ./install
 ```
 
 ## Usage
